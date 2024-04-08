@@ -9,6 +9,7 @@ public class CalculatorTests
     [Test]
     public void Add_TwoFloatingPointValues_ReturnsSum()
     {
+        //Comment
         // Arrange
         const double a = 1.5;
         const double b = 2.75;
