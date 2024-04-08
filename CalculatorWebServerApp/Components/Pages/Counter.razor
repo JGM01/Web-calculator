@@ -7,14 +7,17 @@
 
 <p role="status">Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="PerformAddition">Click me</button>
 
 @code {
-    private int currentCount = 0;
+    private int currentCount = 12;
+    double a = 9;
+    double b = 1;
 
+    private void PerformAddition() => currentCount = (int)Calculator.Add(currentCount, b).Value;
     private void IncrementCount()
     {
-        currentCount++;
+        currentCount += 2;
     }
 
 }

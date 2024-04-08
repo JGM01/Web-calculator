@@ -3,47 +3,67 @@
 public static class Calculator
 {
     //preq-ENGINE-3
-    public static double Add(double x, double y) => x + y;
+    public static Result<double> Add(double x, double y) => new(x + y, true, $"{x} + {y}");
+
     //preq-ENGINE-4
-    public static double Subtract(double x, double y) => x - y;
+    public static Result<double> Subtract(double x, double y) => new(x - y, true, $"{x} - {y}");
 
-    public static Result Divide(double dividend, double divisor)
+    public static Result<double> Divide(double x, double y) =>
+        y == 0 ? 
+            new Result<double>(false, $"{x} / {y}", "Cannot divide by zero") : 
+            new Result<double>(x / y, true, $"{x} / {y}");
+
+    public static Result<double> Multiply(double x, double y) => new(x * y, true, $"{x} * {y}");
+
+    public static Result<bool> IsEqual(double x, double y) => new(Math.Abs(x - y) < 0.00000001, true, $"{x} == {y}");
+
+    public static Result<double> RaiseToPower(double x, double y) => new(Math.Pow(x, y), true, $"{x}^{y}");
+
+    public static Result<double> LogOfNumber(double a, double b)
     {
-        var op = $"{dividend} / {divisor} = ";
-        if (divisor == 0)
+        if (a <= 0) return new Result<double>(false, $"{a} Log {b}", "Log is zero");
+        
+        return b == 0 ? 
+            new Result<double>(false, $"{a} Log {b}", "Base is zero") : 
+            new Result<double>(Math.Log(a,b),true, $"{a} Log {b}", "");
+    }
+
+    public static Result<double> RootOfNumber(double a, double b)
+    {
+        if (b <= 0)
+            return new Result<double>(false, $"{b} Root of {a}", "Root index must be positive");
+
+        if (a < 0 && (b % 2 == 0))
+            return new Result<double>(false, $"{b} Root of {a}", "Negative numbers have no even roots");
+
+        return new Result<double>(Math.Pow(a, 1.0 / b), true, $"{b} Root of {a}");
+    }
+
+    public static Result<double> Factorial(double a)
+    {
+        if (a < 0)
+            return new Result<double>(false, $"{a}!", "Factorial is not defined for negative numbers");
+
+        if (a % 1 != 0)
+            return new Result<double>(false, $"{a}!", "Factorial is only defined for integers");
+
+        double result = 1;
+        for (int i = 2; i <= (int)a; i++)
         {
-            var result = new Result(false,"100 / 0 = ", "Divide by Zero");
-            return result;
+            result *= i;
         }
-        return new Result(dividend / divisor, true, op, "");
+
+        return new Result<double>(result, true, $"{a}!");
     }
 
-    public static double Multiply(double a, double b) => a * b;
+    public static Result<double> Sine(double a) => new(Math.Sin(a), true, $"sin({a})");
 
-    public static bool IsEqual(double a, double b) => Math.Abs(a - b) < 0.00000001;
+    public static Result<double> Cosine(double a) => new(Math.Cos(a), true, $"cos({a})");
 
-    public static double RaiseToPower(double a, double b) => Math.Pow(a, b);
+    public static Result<double> Tangent(double a) => new(Math.Tan(a), true, $"tan({a})");
 
-    public static Result LogOfNumber(double d, double d1)
-    {
-        throw new NotImplementedException();
-    }
-
-    public static Result RootOfNumber(double d, double d1)
-    {
-        throw new NotImplementedException();
-    }
-
-    public static double Factorial(double a) => a == 0 ? 1 : a * Factorial(a - 1);
-
-    public static double Sine(double a) => Math.Sin(a);
-
-    public static double Cosine(double a) => Math.Cos(a);
-
-    public static double Tangent(double a) => Math.Tan(a);
-
-    public static Result Reciprocal(double d)
-    {
-        throw new NotImplementedException();
-    }
+    public static Result<double> Reciprocal(double a) =>
+        a == 0 ?
+            new Result<double>(false, $"1/{a}", "Cannot divide by zero") :
+            new Result<double>(1 / a, true, $"1/{a}");
 }

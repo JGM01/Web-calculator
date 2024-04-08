@@ -1,28 +1,34 @@
 namespace CalculatorEngine;
 
-public class Result
+using System;
+
+public class Result<T>
 {
-        public double Val { get; set;} = 0.0;
-        public bool Success { get; set; }
-        public string Op { get; set; } // for example, "1.25 + 3.8 ="
-        public string Err { get; set; } // for example, "" or "Not A Number
+        public T Value { get; init; }
+        public bool IsSuccess { get; init; }
+        public string Operation { get; init; }
+        public string? ErrorMessage { get; init; }
 
-        public Result(double val, bool success, string op, string err)
+        public Result(T value, bool isSuccess, string operation, string? errorMessage = null)
         {
-                Val = val;
-                Success = success;
-                Op = op;
-                Err = err;
-        }
-        public Result(bool success, string op, string err)
-        {
-                Success = success;
-                Op = op;
-                Err = err;
+                Value = value;
+                IsSuccess = isSuccess;
+                Operation = operation;
+                ErrorMessage = errorMessage;
         }
 
-        public override string ToString()
+        public Result(bool isSuccess, string operation, string? errorMessage = null)
         {
-                return $"{Val}, {Success}, {Op}, {Err}";
+                IsSuccess = isSuccess;
+                Operation = operation;
+                ErrorMessage = errorMessage;
         }
+
+        public override string ToString() => IsSuccess
+                ? $"{Operation} = {Value}"
+                : $"{Operation} => {ErrorMessage}";
+
+        public static implicit operator Result<T>(T value) => new(value, true, string.Empty);
+
+        public static implicit operator Result<T>(string errorMessage) => new(default!, false, string.Empty, errorMessage);
 }
