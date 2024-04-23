@@ -27,4 +27,4 @@ jobs:
     - name: CalculatorEngine Tests
       run: dotnet test CalculatorEngineUnitTests
     - name: CalculatorEngine End-To-End Tests
-      run: dotnet run && dotnet test CalculatorEndToEndTests
+      run: dotnet run CalculatorWebServerApp && dotnet test CalculatorEndToEndTests
