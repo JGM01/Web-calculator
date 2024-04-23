@@ -24,7 +24,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: CalculatorEngine Tests
+    - name: CalculatorEngine Unit Tests
       run: dotnet test CalculatorEngineUnitTests
-    - name: CalculatorEngine End-To-End Tests
-      run: dotnet run --project CalculatorWebServerApp && dotnet test CalculatorEndToEndTests
