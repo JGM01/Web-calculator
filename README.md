@@ -29,5 +29,5 @@ This will run all the tests for the project.
 ```bash
 dotnet test
 ```
-***NOTE***: The webserver MUST be running for the end-to-end tests to pass. The CalculatorEngine project will pass fine. 
+***NOTE***: The webserver MUST be running for the end-to-end tests to pass.
 
