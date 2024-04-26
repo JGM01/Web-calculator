@@ -33,20 +33,12 @@ public static class Calculator
         if (b <= 0)
             return new Result<double>(false, $"{b} Root of {a}", "Root index must be positive");
 
-        if (a < 0 && (b % 2 == 0))
-            return new Result<double>(false, $"{b} Root of {a}", "Negative numbers have no even roots");
-
         return new Result<double>(Math.Pow(a, 1.0 / b), true, $"{b} Root of {a}");
     }
 
     public static Result<double> Factorial(double a)
     {
-        if (a < 0)
-            return new Result<double>(false, $"{a}!", "Factorial is not defined for negative numbers");
-
-        if (a % 1 != 0)
-            return new Result<double>(false, $"{a}!", "Factorial is only defined for integers");
-
+       
         double result = 1;
         for (int i = 2; i <= (int)a; i++)
         {
