@@ -56,4 +56,4 @@ dotnet test CalculatorEngineEndToEndTests
 This will run all the end-to-end tests.
 
 ## Final Video Presentation
-Include a link to your final video presentation. If the file is checked into your Team Repository, this will be a relative link. Otherwise, it will be a fully-qualified link to YouTube or Vimeo.
+The final video presentation can be found [here](https://youtu.be/UPjySdwqY5w).
