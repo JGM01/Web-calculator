@@ -13,52 +13,56 @@ public class Tests : PageTest
     }
     
     [Test]
-    public async Task PageTitleIsCorrect()
+    public async Task CalculatorUI_PageTitle_IsCalculator()
     {
+        //preq-E2E-TEST-5
+        
         // Get the page title
-        string pageTitle = await Page.TitleAsync();
+        string title = await Page.TitleAsync();
 
         // Verify the page title
-        Assert.That(pageTitle, Is.EqualTo("Calculator"));
+        Assert.That(title, Is.EqualTo("Calculator"));
     }
     
     [Test]
-    public async Task CalculatorAdditionWorksCorrectly()
+    public async Task PerformAddition_TwoFloatingNumbers_ShowsSum()
     {
-        // Enter values for A and B
+        //preq-E2E-TEST-6
+        
+        // Enter values for A and B & add.
         await Page.FillAsync("#input-section-container .textField-container:nth-child(1) .textField", "5");
-        await Page.FillAsync("#input-section-container .textField-container:nth-child(2) .textField", "3");
-
-        // Click the addition button
+        await Page.FillAsync("#input-section-container .textField-container:nth-child(2) .textField", "2");
         await Page.ClickAsync("#two-operand-btns button:has-text('A + B')");
 
-        // Verify the result
+        // Check if the result is correct.
         var resultText = await Page.TextContentAsync(".result-box p");
-        Assert.That(resultText, Is.EqualTo("5 + 3 = \n8"));
+        Assert.That(resultText, Is.EqualTo("5 + 2 = \n7"));
     }
     
     [Test]
-    public async Task DivisionByZeroShowsErrorState()
+    public async Task PerformDivision_DenominatorIsZero_ShowsError()
     {
-        // Enter values for A and B
+        //preq-E2E-TEST-7
+        
+        // Enter values for A and B & Divide.
         await Page.FillAsync("#input-section-container .textField-container:nth-child(1) .textField", "10");
         await Page.FillAsync("#input-section-container .textField-container:nth-child(2) .textField", "0");
-
-        // Click the division button
         await Page.ClickAsync("#two-operand-btns button:has-text('A / B')");
 
-        // Verify the result box background color (error state)
-        var resultBoxBackgroundColor = await Page.EvalOnSelectorAsync<string>(".result-box", "el => window.getComputedStyle(el).getPropertyValue('background-color')");
-        Assert.That(resultBoxBackgroundColor, Is.EqualTo("rgb(183, 15, 10)"));
-
-        // Verify the result text contains "Not a Number"
+        // Get result box text & color.
+        var resultColor = await Page.EvalOnSelectorAsync<string>(".result-box", "el => window.getComputedStyle(el).getPropertyValue('background-color')");
         var resultText = await Page.TextContentAsync(".result-box p");
+
+        // Check if red & error message shows.
+        Assert.That(resultColor, Is.EqualTo("rgb(183, 15, 10)"));
         Assert.That(resultText, Does.Contain("Cannot divide by zero"));
     }
     
     /*[Test]
-    public async Task InvalidInputShowsErrorState()
+    public async Task CalculatorUI_StringInput_ShowsError()
     {
+        //preq-E2E-TEST-8
+        
         // Enter values for A and B (B is a text value)
         await Page.FillAsync("#input-section-container .textField-container:nth-child(1) .textField", "10");
         await Page.FillAsync("#input-section-container .textField-container:nth-child(2) .textField", "fifteen");
@@ -76,32 +80,28 @@ public class Tests : PageTest
     }*/
     
     [Test]
-    public async Task ClearButtonResetsToDefaultState()
+    public async Task ClearButton_OnClick_SetsCalculatorToDefaultState()
     {
-        // Enter values for A and B
+        //preq-E2E-TEST-9
+        
+        // Enter values for A and B & add.
         await Page.FillAsync("#input-section-container .textField-container:nth-child(1) .textField", "10");
         await Page.FillAsync("#input-section-container .textField-container:nth-child(2) .textField", "5");
-
-        // Click the addition button
         await Page.ClickAsync("#two-operand-btns button:has-text('A + B')");
 
         // Click the clear button
         await Page.ClickAsync("#header #clear-btn");
 
-        // Verify that Input A is reset to 0
+        // Get values of elements that change when state changes.
         var input1Value = await Page.InputValueAsync("#input-section-container .textField-container:nth-child(1) .textField");
-        Assert.That(input1Value, Is.EqualTo("0"));
-
-        // Verify that Input B is reset to 0
         var input2Value = await Page.InputValueAsync("#input-section-container .textField-container:nth-child(2) .textField");
-        Assert.That(input2Value, Is.EqualTo("0"));
-
-        // Verify the result box background color (default state)
-        var resultBoxBackgroundColor = await Page.EvalOnSelectorAsync<string>(".result-box", "el => window.getComputedStyle(el).getPropertyValue('background-color')");
-        Assert.That(resultBoxBackgroundColor, Is.EqualTo("rgb(255, 236, 215)"));
-
-        // Verify the result text contains "Enter a value(s) below and select an operation."
+        var resultColor = await Page.EvalOnSelectorAsync<string>(".result-box", "el => window.getComputedStyle(el).getPropertyValue('background-color')");
         var resultText = await Page.TextContentAsync(".result-box p");
+
+        // Verify that they are set to default values
+        Assert.That(input1Value, Is.EqualTo("0"));
+        Assert.That(input2Value, Is.EqualTo("0"));
+        Assert.That(resultColor, Is.EqualTo("rgb(255, 236, 215)"));
         Assert.That(resultText, Is.EqualTo(" = \n0"));
     }
 }
