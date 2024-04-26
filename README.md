@@ -16,7 +16,7 @@ Jacob Germana-McCray
 pictures and descriptions
 
 ## Environment
-First, check your .NET SDK version. To do so, open your terminal or command prompt and type the following:
+First, check your .NET SDK version. This project relies on .NET8.0, so you must have it installed to properly run the app. To do so, open your terminal or command prompt and type the following:
 ```bash
 dotnet --version
 ```
@@ -57,9 +57,13 @@ Once this is accomplished, exit out of PowerShell and enter your normal terminal
 
 To execute the end-to-end tests, you must ensure that the `CalculatorWebServerApp` is running. Without this, all the tests will fail.
 
-The preferred way to do this is to open two terminal windows/tabs, and have the Web Server running in one and the following command ran in the other:
+The preferred way to do this is to open two terminal windows/tabs, and have the Web Server running in one:
 ```bash
-dotnet test CalculatorEngineEndToEndTests
+dotnet run --project CalculatorWebServerApp
+```
+and the following command ran in the other:
+```bash
+dotnet test CalculatorEndToEndTests
 ```
 This will run all the end-to-end tests.
 
