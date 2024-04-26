@@ -29,7 +29,9 @@ First, clone, enter & set up the dependencies for the repository:
 git clone https://github.com/JGM01/Web-calculator.git
 cd web-calculator
 dotnet restore
+dotnet build
 ```
+
 After this, you can simply use 
 ```bash
 dotnet run --project CalculatorWebServerApp
@@ -47,6 +49,12 @@ This will run all of the unit tests for the CalculatorEngine project.
 Note the coverage achieved in your Calculator Logic module and include a screenshot of your coverage graphic from your JetBrains IDE. Your calculator logic must achieve 100% test coverage of all statements and paths.
 
 ## Executing End-To-End Tests
+First, you must get all playwright dependencies in order. To do so, you need the `pwsh` command, which is found in the [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4) app. Install and get it set up for your operating system, and run the following commands from inside PowerShell in the Web-Calculator root directory:
+```bash
+pwsh CalculatorEndToEndTests/bin/Debug/net8.0/playwright.ps1 install
+```
+Once this is accomplished, exit out of PowerShell and enter your normal terminal.
+
 To execute the end-to-end tests, you must ensure that the `CalculatorWebServerApp` is running. Without this, all the tests will fail.
 
 The preferred way to do this is to open two terminal windows/tabs, and have the Web Server running in one and the following command ran in the other:
