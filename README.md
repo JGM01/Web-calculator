@@ -47,6 +47,7 @@ This will run all of the unit tests for the CalculatorEngine project.
 
 ## Reviewing Unit Test Coverage
 Note the coverage achieved in your Calculator Logic module and include a screenshot of your coverage graphic from your JetBrains IDE. Your calculator logic must achieve 100% test coverage of all statements and paths.
+![alt text](./unitcoverage.png)
 
 ## Executing End-To-End Tests
 First, you must get all playwright dependencies in order. To do so, you need the `pwsh` command, which is found in the [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4) app. Install and get it set up for your operating system, and run the following commands from inside PowerShell in the Web-Calculator root directory:
