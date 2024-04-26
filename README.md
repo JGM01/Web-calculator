@@ -46,8 +46,9 @@ dotnet test CalculatorEngineUnitTests
 This will run all of the unit tests for the CalculatorEngine project.
 
 ## Reviewing Unit Test Coverage
-Note the coverage achieved in your Calculator Logic module and include a screenshot of your coverage graphic from your JetBrains IDE. Your calculator logic must achieve 100% test coverage of all statements and paths.
 ![alt text](./unitcoverage.png)
+
+Here the unit-test coverage data shows that we achieve 100% statement coverage of the CalculatorEngine Calculator class.
 
 ## Executing End-To-End Tests
 First, you must get all playwright dependencies in order. To do so, you need the `pwsh` command, which is found in the [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4) app. Install and get it set up for your operating system, and run the following commands from inside PowerShell in the Web-Calculator root directory:
@@ -67,6 +68,7 @@ and the following command ran in the other:
 dotnet test CalculatorEndToEndTests
 ```
 This will run all the end-to-end tests.
+**Note**: For some reason I cannot explain, the first end-to-end test run on a new web server instance will result in a failure of the first test. I do not know why, but if you run the test command a second time it should pass.
 
 ## Final Video Presentation
 The final video presentation can be found [here](https://youtu.be/UPjySdwqY5w).
