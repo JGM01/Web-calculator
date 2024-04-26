@@ -16,7 +16,7 @@ Jacob Germana-McCray
 pictures and descriptions
 
 ## Environment
-First, check your .NET SDK version. To do so, open your terminal or command prompt and type the following:
+First, check your .NET SDK version. This project relies on .NET8.0, so you must have it installed to properly run the app. To do so, open your terminal or command prompt and type the following:
 ```bash
 dotnet --version
 ```
@@ -29,7 +29,9 @@ First, clone, enter & set up the dependencies for the repository:
 git clone https://github.com/JGM01/Web-calculator.git
 cd web-calculator
 dotnet restore
+dotnet build
 ```
+
 After this, you can simply use 
 ```bash
 dotnet run --project CalculatorWebServerApp
@@ -44,16 +46,29 @@ dotnet test CalculatorEngineUnitTests
 This will run all of the unit tests for the CalculatorEngine project.
 
 ## Reviewing Unit Test Coverage
-Note the coverage achieved in your Calculator Logic module and include a screenshot of your coverage graphic from your JetBrains IDE. Your calculator logic must achieve 100% test coverage of all statements and paths.
+![alt text](./unitcoverage.png)
+
+Here the unit-test coverage data shows that we achieve 100% statement coverage of the CalculatorEngine Calculator class.
 
 ## Executing End-To-End Tests
+First, you must get all playwright dependencies in order. To do so, you need the `pwsh` command, which is found in the [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4) app. Install and get it set up for your operating system, and run the following commands from inside PowerShell in the Web-Calculator root directory:
+```bash
+pwsh CalculatorEndToEndTests/bin/Debug/net8.0/playwright.ps1 install
+```
+Once this is accomplished, exit out of PowerShell and enter your normal terminal.
+
 To execute the end-to-end tests, you must ensure that the `CalculatorWebServerApp` is running. Without this, all the tests will fail.
 
-The preferred way to do this is to open two terminal windows/tabs, and have the Web Server running in one and the following command ran in the other:
+The preferred way to do this is to open two terminal windows/tabs, and have the Web Server running in one:
 ```bash
-dotnet test CalculatorEngineEndToEndTests
+dotnet run --project CalculatorWebServerApp
+```
+and the following command ran in the other:
+```bash
+dotnet test CalculatorEndToEndTests
 ```
 This will run all the end-to-end tests.
+**Note**: For some reason I cannot explain, the first end-to-end test run on a new web server instance will result in a failure of the first test. I do not know why, but if you run the test command a second time it should pass.
 
 ## Final Video Presentation
-Include a link to your final video presentation. If the file is checked into your Team Repository, this will be a relative link. Otherwise, it will be a fully-qualified link to YouTube or Vimeo.
+The final video presentation can be found [here](https://youtu.be/UPjySdwqY5w).
