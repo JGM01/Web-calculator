@@ -61,9 +61,13 @@
     flex-direction: column;
 }
 
+.button-list-container > p {
+    background-color: #EBEBEB;
+}
+
 button {
     padding: 8px 16px;
-    background-color: #2a9587;
+    background-color: #EBEBEB;
     color: #fff;
     border: none;
     border-radius: 1rem;
@@ -72,16 +76,4 @@ button {
     margin-bottom: 8px;
     width: 6rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-#clear-btn {
-    background-color: #cc3636;
-}
-#clear-btn:hover {
-    background-color: #e56b55;
-}
-
-button:hover {
-    background-color: #6fdab5;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }

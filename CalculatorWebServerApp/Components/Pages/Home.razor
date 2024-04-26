@@ -1,14 +1,20 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
- <div id="calculator-container">
+<head>
+    <title>
+        Calculator
+    </title>
+</head>
+
+<div id="calculator-container">
      <div id="header">
          <h3>Calculator</h3>
          <button id="clear-btn" @onclick="ClearOperands">Clear</button>
      </div>
      
      
-     <div class="result-box" style="background-color: @(resultValue.IsSuccess ? "#e9e9e9" : "red")">
+     <div class="result-box" style="background-color: @(resultValue.IsSuccess ? "#FFECD7" : "#B70F0A")">
          <p>@resultValue.Operation = 
          @if (resultValue.IsSuccess)
          {
