@@ -2,12 +2,12 @@
 This repository contains a web-based calculator application developed using C# and ASP.NET Blazor. It's designed to reinforce testing concepts and provide valuable coding practice.
 
 ## Table of Contents
-- [Environment](#Environment)
-- [Executing the Web Application](#Executing-the-web-application)
-- [Executing Unit Tests](#Executing-Unit-Tests)
-- [Reviewing Unit Test Coverage](#Reviewing-Unit-Test-Coverage)
-- [Executing End-To-End Tests](#Executing-End-To-End-Tests)
-- [Final Video Presentation](#Final-Video-Presentation)
+- [Environment](#environment)
+- [Executing the Web Application](#executing-the-web-application)
+- [Executing Unit Tests](#executing-Unit-Tests)
+- [Reviewing Unit Test Coverage](#reviewing-Unit-Test-Coverage)
+- [Executing End-To-End Tests](#executing-End-To-End-Tests)
+- [Final Video Presentation](#final-Video-Presentation)
   
 ## 🧍‍♂️ Team Members
 Jacob Germana-McCray
