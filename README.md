@@ -20,7 +20,7 @@ My project is split into the following sub-projects:
 - CalculatorEndToEndTests
 
 This is done to seperate the different functionalities of the program, and make it easier to test in a modular fashion.
-
+![alt text](./diagram.png)
 ## Environment
 First, check your .NET SDK version. This project relies on .NET8.0, so you must have it installed to properly run the app. To do so, open your terminal or command prompt and type the following:
 ```bash
