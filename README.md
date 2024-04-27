@@ -13,7 +13,13 @@ This repository contains a web-based calculator application developed using C# a
 Jacob Germana-McCray
 
 ## Architecture
-pictures and descriptions
+My project is split into the following sub-projects:
+- CalculatorEngine
+- CalculatorEngineUnitTests
+- CalculatorWebServerApp
+- CalculatorEndToEndTests
+
+This is done to seperate the different functionalities of the program, and make it easier to test in a modular fashion.
 
 ## Environment
 First, check your .NET SDK version. This project relies on .NET8.0, so you must have it installed to properly run the app. To do so, open your terminal or command prompt and type the following:
@@ -36,7 +42,15 @@ After this, you can simply use
 ```bash
 dotnet run --project CalculatorWebServerApp
 ```
-To launch the web app at the localhost specified in the terminal.
+To launch the web app. You can access the calculator webpage by going to the localhost port specified in the terminal output:
+```bash
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5231  <-- HERE
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+```
 
 ## Executing Unit Tests
 To Execute the unit tests, remain in the root directory of the project and use the following command:
