@@ -8,17 +8,22 @@ public static class Calculator
     //preq-ENGINE-4
     public static Result<double> Subtract(double x, double y) => new(x - y, true, $"{x} - {y}");
 
+    //preq-ENGINE-7
     public static Result<double> Divide(double x, double y) =>
         y == 0 ? 
             new Result<double>(false, $"{x} / {y}", "Cannot divide by zero") : 
             new Result<double>(x / y, true, $"{x} / {y}");
 
+    //preq-ENGINE-5
     public static Result<double> Multiply(double x, double y) => new(x * y, true, $"{x} * {y}");
 
+    //preq-ENGINE-8
     public static Result<bool> IsEqual(double x, double y) => new(Math.Abs(x - y) < 0.00000001, true, $"{x} == {y}");
 
+    //preq-ENGINE-9
     public static Result<double> RaiseToPower(double x, double y) => new(Math.Pow(x, y), true, $"{x}^{y}");
 
+    //preq-ENGINE-10
     public static Result<double> LogOfNumber(double a, double b)
     {
         if (a <= 0) return new Result<double>(false, $"{a} Log {b}", "Log is zero");
@@ -28,6 +33,7 @@ public static class Calculator
             new Result<double>(Math.Log(a,b),true, $"{a} Log {b}", "");
     }
 
+    //preq-ENGINE-11
     public static Result<double> RootOfNumber(double a, double b)
     {
         if (b <= 0)
@@ -36,6 +42,7 @@ public static class Calculator
         return new Result<double>(Math.Pow(a, 1.0 / b), true, $"{b} Root of {a}");
     }
 
+    //preq-ENGINE-12
     public static Result<double> Factorial(double a)
     {
        
@@ -48,12 +55,16 @@ public static class Calculator
         return new Result<double>(result, true, $"{a}!");
     }
 
+    //preq-ENGINE-13
     public static Result<double> Sine(double a) => new(Math.Sin(a), true, $"sin({a})");
 
+    //preq-ENGINE-14
     public static Result<double> Cosine(double a) => new(Math.Cos(a), true, $"cos({a})");
 
+    //preq-ENGINE-15
     public static Result<double> Tangent(double a) => new(Math.Tan(a), true, $"tan({a})");
 
+    //preq-ENGINE-16
     public static Result<double> Reciprocal(double a) =>
         a == 0 ?
             new Result<double>(false, $"1/{a}", "Cannot divide by zero") :
