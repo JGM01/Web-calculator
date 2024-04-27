@@ -65,7 +65,7 @@ This will run all of the unit tests for the CalculatorEngine project.
 Here the unit-test coverage data shows that we achieve 100% statement coverage of the CalculatorEngine Calculator class.
 
 ## Executing End-To-End Tests
-First, you must get all playwright dependencies in order. To do so, you need the `pwsh` command, which is found in the [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4) app. Install and get it set up for your operating system, and run the following commands from inside PowerShell in the Web-Calculator root directory:
+First, you must get all playwright dependencies in order. To do so, you need the `pwsh` command, which is found in the [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4) app. Once you've installed PowerShell (or if you already have it installed) paste the following command while in the root directory of the project:
 ```bash
 pwsh CalculatorEndToEndTests/bin/Debug/net8.0/playwright.ps1 install
 ```
